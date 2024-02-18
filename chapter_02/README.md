@@ -754,17 +754,3 @@ packages.
 - pip install pandas
 - pip uninstall numpy
 
-
-
-
-
-
-
-```python
-
-```
-
-
-```python
-
-```
