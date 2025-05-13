@@ -63,7 +63,7 @@ print("id:", id(myset))
 print("clear:", myset.clear())
 print("original:", myset)  # clear removes all items from the set
 
-# Dictionary: is an unordered collection of key-value pairs
+# Dictionary: is an ordered collection of key-value pairs
 mydict = {
     "name": "Abdallah",
     "age": 25,
