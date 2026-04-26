@@ -1,5 +1,5 @@
 # ==========================================
-# CHAPTER 5: EXCEPTION HANDLING & MODULES
+# CHAPTER 5: EXCEPTION HANDLING , MODULES & FILE HANDLING
 # ==========================================
 
 
@@ -20,7 +20,7 @@ without crashing the program.
 # 1.1 BASIC TRY-EXCEPT
 # ------------------------------------------
 
-'''try:
+try:
 import mymodule
 import math as m
 from math import sqrt
@@ -30,14 +30,10 @@ print(10 / x)
 except:
     print("An error occurred")
 
-'''
+
 # ------------------------------------------
 # 1.2 SPECIFIC EXCEPTIONS
 # ------------------------------------------
-
-"""
-Handling specific errors is better practice.
-"""
 
 try:
     num = int(input("Enter number: "))
@@ -54,10 +50,6 @@ except ValueError:
 # 1.3 ELSE BLOCK
 # ------------------------------------------
 
-"""
-else runs if NO exception occurs
-"""
-
 try:
     num = int(input("Enter number: "))
     result = 10 / num
@@ -70,10 +62,6 @@ else:
 # ------------------------------------------
 # 1.4 FINALLY BLOCK
 # ------------------------------------------
-
-"""
-finally ALWAYS runs (error or not)
-"""
 
 try:
     file = open("test.txt")
@@ -98,10 +86,6 @@ except (ValueError, ZeroDivisionError):
 # 1.6 CUSTOM EXCEPTION (raise)
 # ------------------------------------------
 
-"""
-raise is used to create your own error
-"""
-
 age = int(input("Enter age: "))
 
 if age < 18:
@@ -115,32 +99,12 @@ if age < 18:
 """
 Definition:
 A module is a file containing Python code (functions, variables).
-
-Used to organize code and promote reuse.
+Used for code reuse and organization.
 """
 
 
-# ------------------------------------------
-# 2.1 IMPORT MODULE
-# ------------------------------------------
-
-
 print(math.sqrt(16))
-
-
-# ------------------------------------------
-# 2.2 IMPORT SPECIFIC FUNCTION
-# ------------------------------------------
-
-
 print(sqrt(25))
-
-
-# ------------------------------------------
-# 2.3 IMPORT WITH ALIAS
-# ------------------------------------------
-
-
 print(m.pi)
 
 
@@ -149,17 +113,13 @@ print(m.pi)
 # ------------------------------------------
 
 """
-Create file: mymodule.py
+File: mymodule.py
 """
-
-# mymodule.py
 
 
 def greet(name):
     return "Hello " + name
 
-
-# main file
 
 print(mymodule.greet("Ali"))
 
@@ -167,12 +127,6 @@ print(mymodule.greet("Ali"))
 # ------------------------------------------
 # 2.5 __name__ VARIABLE
 # ------------------------------------------
-
-"""
-__name__ == "__main__" ensures code runs only
-when file is executed directly
-"""
-
 
 def test():
     print("Running test function")
@@ -183,13 +137,85 @@ if __name__ == "__main__":
 
 
 # ==========================================
-# 3) SIMPLE PROJECT: SAFE CALCULATOR
+# 3) FILE HANDLING
 # ==========================================
 
 """
-Project:
-Calculator using exception handling
+Definition:
+File handling is used to store and read data from files.
+Modes:
+- r → read
+- w → write (overwrite)
+- a → append
+- x → create new file
 """
+
+
+# ------------------------------------------
+# 3.1 WRITE TO FILE
+# ------------------------------------------
+
+file = open("data.txt", "w")
+file.write("Hello Python\n")
+file.write("File Handling Example")
+file.close()
+
+
+# ------------------------------------------
+# 3.2 READ FILE
+# ------------------------------------------
+
+file = open("data.txt", "r")
+content = file.read()
+print(content)
+file.close()
+
+
+# ------------------------------------------
+# 3.3 APPEND TO FILE
+# ------------------------------------------
+
+file = open("data.txt", "a")
+file.write("\nNew line added")
+file.close()
+
+
+# ------------------------------------------
+# 3.4 WITH STATEMENT (BEST PRACTICE)
+# ------------------------------------------
+
+"""
+Automatically closes file after use
+"""
+
+with open("data.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+
+# ------------------------------------------
+# 3.5 READ LINE BY LINE
+# ------------------------------------------
+
+with open("data.txt", "r") as file:
+    for line in file:
+        print(line.strip())
+
+
+# ------------------------------------------
+# 3.6 FILE HANDLING + EXCEPTION
+# ------------------------------------------
+
+try:
+    with open("missing.txt", "r") as file:
+        print(file.read())
+except FileNotFoundError:
+    print("File does not exist")
+
+
+# ==========================================
+# 4) SIMPLE PROJECT: SAFE CALCULATOR
+# ==========================================
 
 while True:
     try:
@@ -223,16 +249,12 @@ while True:
 
 
 # ==========================================
-# 4) SUMMARY
+# 5) SUMMARY
 # ==========================================
 
 """
 Exception Handling:
-- try → test code
-- except → handle error
-- else → runs if no error
-- finally → always runs
-- raise → custom error
+- try, except, else, finally, raise
 
 Modules:
 - import module
@@ -240,6 +262,13 @@ Modules:
 - alias (as)
 - custom modules
 - __name__ == "__main__"
+
+File Handling:
+- r → read
+- w → write
+- a → append
+- x → create
+- with open() → best practice
 
 Project:
 ✔ Safe Calculator
