@@ -20,7 +20,7 @@ without crashing the program.
 # 1.1 BASIC TRY-EXCEPT
 # ------------------------------------------
 
-try:
+'''try:
 import mymodule
 import math as m
 from math import sqrt
@@ -30,7 +30,7 @@ print(10 / x)
 except:
     print("An error occurred")
 
-
+'''
 # ------------------------------------------
 # 1.2 SPECIFIC EXCEPTIONS
 # ------------------------------------------
