@@ -126,6 +126,26 @@ print("Stack after pop:", stack)
 
 print("Top element:", stack[-1])
 
+# ==========================================
+# COMMANDS IN LINUX PROJECT (USING DICTIONARY)
+# ==========================================
+commands = {
+    "cat": 'read file',
+    "pwd": 'print working directory',
+    "cd": "change directory",
+}
+
+while True:
+    command = input("Enter a command: ").lower()
+
+    if command == "exit":
+        print("Exiting with code 0")
+        break
+    if command in commands:
+        print(commands[command])
+    else:
+        print("Command not found")
+
 
 # ==========================================
 # 3) FUNCTIONS
